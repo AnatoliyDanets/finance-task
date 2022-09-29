@@ -1,0 +1,23 @@
+.cases__list {
+  display: grid;
+  grid-row-gap: 8px;
+}
+
+.cases__img {
+  height: 100%;
+  transition: filter 250ms linear;
+}
+.cases__img:hover {
+  filter: blur(5px);
+}
+
+@media screen and (min-width: 768px) {
+  .cases__list {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 18px;
+  }
+
+  .cases__img {
+    min-height: 148px;
+  }
+}

@@ -1,0 +1,150 @@
+.team {
+  padding: 72px 0px 20px;
+  text-align: center;
+}
+.team__list {
+  display: grid;
+  grid-row-gap: 15px;
+}
+.team__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #333333;
+  margin-bottom: 16px;
+}
+
+.team__discription {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+
+  color: #333333;
+  margin-bottom: 63px;
+}
+.team__social {
+  position: relative;
+  transition: transform 250ms linear, filter 250ms linear;
+}
+
+.team__social_list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #040404;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  /* z-index: 100; */
+
+  transition: opacity 250ms linear;
+}
+
+.team__social:hover {
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.6));
+  transform: scale(1.01);
+}
+
+.team__social:hover .team__social_list {
+  opacity: 0.8;
+}
+
+.team__social_item:not(:last-child) {
+  margin-right: 25px;
+}
+.team__icon {
+  fill: #ffffff;
+  opacity: 1;
+  transition: fill 250ms linear, opacity 250ms linear;
+}
+.team__icon:hover {
+  fill: #28a745;
+  opacity: 0.8;
+}
+
+.team__info {
+  padding: 16px 0px 15px;
+}
+
+.team__title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.team__employee {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #333333;
+}
+
+@media screen and (min-width: 768px) {
+  .team {
+    padding: 50px 0px 26px;
+  }
+  .team__list {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 18px;
+  }
+  .team__text {
+    font-size: 20px;
+    line-height: 33px;
+  }
+
+  .team__discription {
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 24px;
+  }
+
+  .team__info {
+    padding: 16px 0px;
+  }
+
+  .team__title {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  .team__employee {
+    font-size: 18px;
+    line-height: 25px;
+  }
+}
+
+@media screen and (min-width: 1360px) {
+  .team {
+    padding: 80px 0px 73px;
+  }
+
+  .team__discription {
+    margin-bottom: 36px;
+  }
+
+  .team__info {
+    padding: 15px 0px;
+  }
+  .team__image {
+    min-height: 287px;
+  }
+}
