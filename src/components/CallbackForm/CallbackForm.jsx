@@ -23,8 +23,23 @@ const encode = (data) => {
 };
 
 export default function CallbackForm() {
-    const handleSubmit = ({ name, email }) => {
-        console.log(name, email);
+    const handleSubmit = (values) => {
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encode({
+                "form-name": "contact",
+                ...values,
+            }),
+        })
+            .then(() => {
+                alert("Success!");
+
+            })
+            .catch((error) => {
+                alert(`Error:${error}`);
+
+            });
     };
     return (
         <section className={s.callback} id="Contact">
@@ -74,22 +89,7 @@ export default function CallbackForm() {
                     }}
                     validateOnBlur
                     onSubmit={(values, { setSubmitting }) => {
-                        fetch("/", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                            body: encode({
-                                "form-name": "contact",
-                                ...values,
-                            }),
-                        })
-                            .then(() => {
-                                alert("Success!");
-                                setSubmitting(false);
-                            })
-                            .catch((error) => {
-                                alert("Error: Please Try Again!");
-                                setSubmitting(false);
-                            });
+                        handleSubmit(values)
                     }}
                     validationSchema={CallbackSchema}
                 >
