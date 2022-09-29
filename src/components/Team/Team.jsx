@@ -19,7 +19,6 @@ export default function Team() {
                         <article className={s.team__card}>
                             <div className={s.team__social}>
                                 <picture>
-
                                     <source
                                         srcSet={require("../../images/team/person1@2x.webp")}
                                         media="(min-width:768px)"
@@ -45,7 +44,7 @@ export default function Team() {
                                     />
                                 </picture>
 
-                                <div  >
+                                <div>
                                     <ul className={s.team__social_list}>
                                         <li className={s.team__social_item}>
                                             <a href="https://www.facebook.com/">

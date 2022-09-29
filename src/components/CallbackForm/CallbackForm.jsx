@@ -23,24 +23,6 @@ const encode = (data) => {
 };
 
 export default function CallbackForm() {
-    const handleSubmit = (values) => {
-        fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: encode({
-                "form-name": "contact",
-                ...values,
-            }),
-        })
-            .then(() => {
-                alert("Success!");
-
-            })
-            .catch((error) => {
-                alert(`Error:${error}`);
-
-            });
-    };
     return (
         <section className={s.callback} id="Contact">
             <picture>
@@ -88,8 +70,22 @@ export default function CallbackForm() {
                         email: "",
                     }}
                     validateOnBlur
-                    onSubmit={(values, { setSubmitting }) => {
-                        handleSubmit(values)
+                    onSubmit={(values, { resetForm }) => {
+                        fetch("/", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                            body: encode({
+                                "form-name": "contact",
+                                ...values,
+                            }),
+                        })
+                            .then(() => {
+                                alert("Success!");
+                            })
+                            .catch((error) => {
+                                alert(`Error: ${error}`);
+                            });
+                        resetForm();
                     }}
                     validationSchema={CallbackSchema}
                 >
@@ -97,6 +93,7 @@ export default function CallbackForm() {
                         values,
                         errors,
                         touched,
+                        handleSubmit,
                         handleChange,
                         handleReset,
                         handleBlur,
@@ -106,7 +103,6 @@ export default function CallbackForm() {
                         <form
                             className={s.callback__form}
                             name="contact"
-                            method="POST"
                             onSubmit={handleSubmit}
                             onReset={handleReset}
                             data-netlify="true"
@@ -125,15 +121,17 @@ export default function CallbackForm() {
                                                 {errors.name}
                                             </span>
                                         )}
-                                        <input
-                                            className={s.callback__form_input}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.name}
-                                            type="text"
-                                            name="name"
-                                            placeholder="Enter your name"
-                                        />
+                                        <label htmlFor="name">
+                                            <input
+                                                className={s.callback__form_input}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.name}
+                                                type="text"
+                                                name="name"
+                                                placeholder="Enter your name"
+                                            />
+                                        </label>
                                     </div>
                                 </li>
                                 <li key={2} className={s.callback__form_item}>
@@ -146,20 +144,26 @@ export default function CallbackForm() {
                                                 {errors.email}
                                             </span>
                                         )}
-                                        <input
-                                            className={s.callback__form_input}
-                                            type="email"
-                                            name="email"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.email}
-                                            placeholder="Enter email*"
-                                        />
+                                        <label htmlFor="email">
+                                            <input
+                                                className={s.callback__form_input}
+                                                type="email"
+                                                name="email"
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.email}
+                                                placeholder="Enter email*"
+                                            />
+                                        </label>
                                     </div>
                                 </li>
                             </ul>
 
-                            <Button type={"submit"} children={"Send"} disabled={!isValid} />
+                            <Button
+                                type={"submit"}
+                                children={"Send"}
+                                disabled={!isValid || !dirty}
+                            />
                         </form>
                     )}
                 </Formik>

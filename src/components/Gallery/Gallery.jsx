@@ -35,7 +35,7 @@ export default function SimpleGallery(props) {
     return (
         <ul className={s.cases__list} id={props.galleryID}>
             {props.images.map((image, index) => (
-                <li className={s.cases__item}>
+                <li key={index} className={s.cases__item}>
                     <a
                         href={image.largeURL}
                         data-pswp-width={image.width}

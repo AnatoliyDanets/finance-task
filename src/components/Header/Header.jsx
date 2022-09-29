@@ -20,7 +20,6 @@ export default function Header() {
         };
     }, []);
 
-    console.log(scrollY);
     return (
         <header
             id="home"

@@ -14,7 +14,7 @@ export default function Navigation() {
                 <span className={s.header__logo_item}>Ledger</span>
             </a>
             <ul className={s.header__list}>
-                <li className={s.header__item}>
+                <li key={1} className={s.header__item}>
                     <Link
                         className={s.header__link}
                         activeClass="active"
@@ -27,7 +27,7 @@ export default function Navigation() {
                         Home
                     </Link>
                 </li>
-                <li className={s.header__item}>
+                <li key={2} className={s.header__item}>
                     <Link
                         className={s.header__link}
                         activeClass="active"
@@ -40,7 +40,7 @@ export default function Navigation() {
                         About
                     </Link>
                 </li>
-                <li className={s.header__item}>
+                <li key={3} className={s.header__item}>
                     <Link
                         className={s.header__link}
                         activeClass="active"
@@ -53,7 +53,7 @@ export default function Navigation() {
                         Cases
                     </Link>
                 </li>
-                <li className={s.header__item}>
+                <li key={4} className={s.header__item}>
                     <Link
                         className={s.header__link}
                         activeClass="active"
@@ -66,7 +66,7 @@ export default function Navigation() {
                         Blog
                     </Link>
                 </li>
-                <li className={s.header__item}>
+                <li key={5} className={s.header__item}>
                     <Link
                         className={s.header__link}
                         activeClass="active"
